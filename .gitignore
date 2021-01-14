@@ -1,0 +1,4 @@
+# ignore build file #
+Build/
+out/
+Project_3/img_output/
