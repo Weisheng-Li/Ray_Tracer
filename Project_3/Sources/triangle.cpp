@@ -28,8 +28,8 @@ triangle::triangle(glm::vec3 p0, glm::vec3 p1, glm::vec3 p2, float tx0, float tx
 
 float triangle::testIntersection(glm::vec3 eye, glm::vec3 dir)
 {
-	//see the book/slides for a description of how to use Cramer's rule to solve
-	//for the intersection(s) of a line and a plane, implement it here and
+	// Cramer's rule
+	//for the intersection(s) of a line and a plane, 
 	//return the minimum distance (if barycentric coordinates indicate it hit
 	//the triangle) otherwise 9999999
 
@@ -86,7 +86,6 @@ glm::vec3 triangle::getNormal(glm::vec3 eye, glm::vec3 dir)
 
 	//cross them to get the normal to the plane
 	//note that the normal points in the direction given by right-hand rule
-	//(this can be important for refraction to know whether you are entering or leaving a material)
 	glm::vec3 normal = glm::normalize(glm::cross(bary1, bary2));
 
 	// add vector turbulance to the normal
@@ -111,7 +110,8 @@ glm::vec2 triangle::getTextureCoords(glm::vec3 eye, glm::vec3 dir)
 	//to find the texture surface location of the point you are seeing
 
 	// first, find gamma and beta, similar to what testIntersection do
-	// Based on textbook P78 equation 4.2, point0:a, point1:b, point2:c, eye:e, dir:d
+	// Based on Fundamentals of Computer Graphics P78 equation 4.2, 
+	// point0:a, point1:b, point2:c, eye:e, dir:d
 	// any point can be expressed by a + beta(b - a) + gamma(c - a)
 	float a = point0.x - point1.x;
 	float b = point0.y - point1.y;
@@ -141,15 +141,11 @@ glm::vec2 triangle::getTextureCoords(glm::vec3 eye, glm::vec3 dir)
 
 	float beta = (j * ei_hf + k * gf_di + l * dh_eg) / M;
 	if (beta <= 0.0f || beta >= 1.0f) {
-		//assert(false);
-		//printf("beta: %.4f\n", beta);
 		return glm::vec2(0.0f);
 	}
 
 	float gamma = (i * ak_jb + h * jc_al + g * bl_kc) / M;
 	if (gamma <= 0.0f || gamma >= (1.0f - beta)) {
-		//assert(false);
-		//printf("gamma: %.4f\n", gamma);
 		return glm::vec2(0.0f);
 	}
 

@@ -171,19 +171,12 @@ glm::vec3 scene::rayTrace(glm::vec3 eye, glm::vec3 dir, int recurseDepth)
 		}
 	}
 
-	//put a limit on the depth of recursion
-	//if (recurseDepth<3)
-	//{
-	//reflect our view across the normal
 	//recusively raytrace from the surface point along the reflected view
 	//add the color seen times the reflective color
 	if (recurseDepth < 3)
 	{
 		// Calculate the mirror reflection direction
 		glm::vec3 R1 = glm::normalize(-dir);
-
-		// glm::vec3 reflected_ray = glm::normalize(2.0f * glm::dot(R1, normal) * normal - R1);
-		// answer += texture->reflectiveCol * rayTrace(intersec_p, reflected_ray, recurseDepth + 1);
 
 		glm::vec3 reflection_vector = glm::normalize(dir - 2 * (glm::dot(dir, normal)) * normal);
 		answer += myMaterials[matIndex].reflectiveCol * rayTrace(intersec_p + reflection_vector * EPSILON, reflection_vector, recurseDepth + 1);
@@ -197,7 +190,7 @@ glm::vec3 scene::rayTrace(glm::vec3 eye, glm::vec3 dir, int recurseDepth)
 		//recursively raytrace from the other side of the object along the new direction
 		//add the color seen times the transparent color
 
-		// This solution comes from textbook P305, 3rd edition
+		// Reference: Fundamentals of Computer Graphics, P305, 3rd edition
 		/////////////////////////////////////////////////////////////////////////////////////////////		
 		glm::vec3 d;
 		float n, nt;

@@ -1,7 +1,6 @@
 /*
-Project 3 Submission for CMPSC458
-Name: Weisheng Li
-psu id: wjl5238
+Author: Weisheng Li
+Email: wjl5238@psu.edu
 */
 
 #include <Project3.hpp>
@@ -209,8 +208,6 @@ int main(int argc, char **argv)
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		// ImGui::ShowDemoWindow(&show_demo_window);
-
 		{
 			// Most ImGui functions would normally just crash if the context is missing.
 			IM_ASSERT(ImGui::GetCurrentContext() != NULL && "Missing dear imgui context. Refer to examples app!");
@@ -298,12 +295,6 @@ int main(int argc, char **argv)
 				for (int x = 0; x < SCR_WIDTH; x++)
 				{
 					glm::vec3 currentColor;
-
-					// You will have to write this function in the scene class, using recursive raytracing to determine color
-					//   Right here, you will need to determine the current direction "currentDir" based off what you know about projective geometry (Section 4.3)
-					//     You will need to compute the direction from the eye, to the place on the camera plane derived from the x and y coordinates and the lookat direction (Section 4.3.3) 
-					//     The eye is defined by the camera coordinates (above)
-					//   The ray is defined (using the line equation y=mx+b ... again) where m=the current direction and b= the eye. 
 					
 					// Obtain two basis vectors for view rectangle
 					// direction
@@ -402,7 +393,7 @@ int main(int argc, char **argv)
 	}
 
 
-	// optional: de-allocate all resources once they've outlived their purpose:
+	// de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
     if (!cluster) 
     {
@@ -419,7 +410,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+//   process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 //   The movement of the boxes is still here.  Feel free to use it or take it out
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow *window)

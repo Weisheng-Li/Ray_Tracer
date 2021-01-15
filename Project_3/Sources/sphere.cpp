@@ -14,11 +14,7 @@ sphere::sphere(glm::vec3 c, float r, int m, scene* s) : rtObject(s)
 
 float sphere::testIntersection(glm::vec3 eye, glm::vec3 dir)
 {
-	//see the book for a description of how to use the quadratic rule to solve
-	//for the intersection(s) of a line and a sphere, implement it here and
-	//return the minimum positive distance or 9999999 if none
-
-	// based on textbook P77 equations, eye:e, dir:d, center:c, radius:r
+	// based on Fundamental of Computer Graphics P77 equations, eye:e, dir:d, center:c, radius:r
 	float epsilon = 0.0001f;
 	dir = glm::normalize(dir);
 
@@ -75,7 +71,6 @@ glm::vec2 sphere::getTextureCoords(glm::vec3 eye, glm::vec3 dir)
 
 	//phi is the angle down from z
 	//theta is the angle from x curving toward y
-	//hint: angle between two vectors is the acos() of the dot product
 
 	//find phi using normal and z
 	float phi = acos(glm::dot(normal, z));
