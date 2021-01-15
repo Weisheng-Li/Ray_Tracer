@@ -1,5 +1,5 @@
 # Ray Tracer
-A ray-tracing based rendering application. Provided 
+A ray-tracing based rendering application. 
 
 ## Getting Started
 1. Project_3 >> Project_3.exe
